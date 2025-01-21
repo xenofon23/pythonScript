@@ -73,9 +73,10 @@ import os
 import zipfile
 
 
-def create_db_dump( user, password, db_name, dump_file):
+def create_db_dump(user, password, db_name, dump_file):
     command = [
-        'mariadb-dump', f'--user={user}', f'--password={password}', db_name, '--single-transaction=false'
+        # 'mariadb-dump', f'--user={user}', f'--password={password}', db_name, '--single-transaction=false'
+        'mysqldump', f'--user={user}', f'--password={password}', db_name, '--single-transaction=false'
     ]
 
     with open(dump_file, 'wb') as f:
