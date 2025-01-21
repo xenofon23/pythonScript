@@ -75,7 +75,7 @@ import zipfile
 
 def create_db_dump( user, password, db_name, dump_file):
     command = [
-        'mysqldump ', f'--user={user}', f'--password={password}', db_name
+        'mariadb-dump', f'--user={user}', f'--password={password}', db_name, '--single-transaction=false'
     ]
 
     with open(dump_file, 'wb') as f:
@@ -104,7 +104,7 @@ def upload_backup(zip_file_name, api_url, backup_rule_id, password):
 def main():
     db_user = 'root'
     db_password = 'password'
-    db_name = 'laravel'
+    db_name = 'magento'
     api_url = 'http://localhost:999/api/backups/push/f2279e84-7442-4074-8824-26dd3eff3b45'
     backup_rule_id = 'd6a98cc8-f63b-46b4-a525-0322504ba457'
     password = 'password'
